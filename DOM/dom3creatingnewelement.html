@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nodelist</title>
+</head>
+<body style="background-color: black; color:white">
+   
+</body>
+<script>
+    let div = document.createElement("Div");  // used to create an new HTML element
+    console.log(div);
+    div.className = "one";  // setting div class
+    div.id = "01"           // setting an div id
+
+    //div.innerHTML = "HI THESE IS ANIKET";   // setting an div content
+
+    div.style.backgroundColor = "blue";
+
+    let addText = document.createTextNode("HI THESE IS ANIKET"); // we can also set an div content like these
+    div.appendChild(addText);
+
+    document.body.appendChild(div);  // to attach the newly created HTML element to the document
+</script>
+</html>

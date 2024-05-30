@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color: #212121; color:white">
+
+<h2 id="Aniket" class="h2">My First Page</h2>
+
+<a id="link" class="google" href ="www.google.com">Google</a>
+
+<p id="demo"class="para"  >My name is ATP</p>
+
+<div id="Div" class="div">
+    This is A DIv
+</div>
+
+<p class="text" id="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+<button>submit</button><br>
+
+<label for="input">Name :</label>
+<input type="text" id="input" name="in">
+
+<ul>
+    <li class="myList">One</li>
+    <li class="myList">Two</li>
+    <li class="myList">Three</li>
+    <li class="myList">Four</li>
+</ul>
+
+<script>
+    let div = document.querySelector("div").outerHTML = "<div class = aniket>Hi these is Aniket</div>"
+    let div2 = document.querySelector("div");
+    div2.style.backgroundColor= "red"
+    div2.style.color = "yellow"
+    let anchor = document.querySelector("a");
+    anchor.style.color = "pink";
+    anchor.style.textDecoration = "none"
+
+    let heading = document.getElementById("Aniket");//.outerHTML = "<h2 id = Aniket> These is Headingh </h2> "
+    // heading.outerHTML = "<h2 id = Aniket> These is Headingh </h2> "
+    heading.style.backgroundColor = "red";
+    heading.style.color = "black"
+
+    let button = document.querySelector("button").outerHTML = "<button> yes </button>";
+    button = document.querySelector("button");
+    button.style.color = "red";
+    button.style.padding = "10px";
+
+</script>
+</body>
+</html>
+
+<!--
+    document.getElementById("Aniket");
+<h2 id=​"Aniket" class=​"h2" style=​"background-color:​ red;​ color:​ black;​">​My First Page​</h2>​
+document.getElementById("Aniket").id;
+
+'Aniket'
+document.getElementById("Aniket").className;
+
+'h2'
+document.getElementById("Aniket").getAttribute("id")
+
+'Aniket'
+document.getElementById("Aniket").setAttribute("id","aniket");
+
+undefined
+let heading = document.getElementById("Aniket").setAttribute("id","aniket");
+console.log(heading);
+
+heading
+<h2 id=​"Aniket" class=​"h2" style=​"background-color:​ red;​ color:​ black;​ padding:​ 20px;​ border-radius:​ 20px;​">​My First Page​</h2>​
+heading.textContent;             // shows all the content inside the element even hidden text also
+'My First Page'
+heading.innerHTML;               // show all the html element i.e if we define an element inside the element it show entire element
+'My First Page'
+heading.innerContent;           // shows the content we want to show not show hidden content
+undefined
+heading.innerText;
+'My First Page'
+
+document.querySelector(".para");
+<p id=​"demo" class=​"para">​My name is ATP​</p>​
+
+document.querySelector("#demo");
+<p id=​"demo" class=​"para">​My name is ATP​</p>
+​
+document.querySelector('input[type="text"]');
+<input type=​"text" id=​"input" name=​"in">​
+
+document.querySelector("p");                                 // returns only the first "p" in the HTML document // used to select individual element
+<p id=​"demo" class=​"para">​My name is ATP​</p>​
+
+document.querySelectorAll("p");                             // returns all the "p" element inside the document
+NodeList(2) [p#demo.para, p#paragraph.text]0: p#demo.para1: p#paragraph.textlength: 2[[Prototype]]: NodeList   
+
+document.querySelector("ul");
+<ul>​…​</ul>​<li style=​"color:​ green;​">​…​</li>​::marker​"One"</li>​<li>​…​</li>​<li>​…​</li>​::marker​"Three"</li>​</ul>​
+
+let ul = document.querySelector("ul");        // querySelector always returns an first element. fot selecting all the element we used "querySelectorAll()"
+ul.querySelector("li");
+<li>​…​</li>​
+
+let li_1 = ul.querySelector("li");
+li_1.style.color = "green";
+'green'
+
+li_1.style.padding = "10px";
+'10px'
+
+li_1.style.backgroundColor = "yellow";     
+'yellow'
+
+li_1.innerText;                       // display inner text of element
+'One'
+
+li_1.innerText = "five"                // change the hyml element content
+'five'
+-->
+
+<!--
+
+    document.querySelectorAll("li")
+NodeList(3) [li, li, li]                     // node list and HTML collection is not an proper Array, although we can apply 'forEach' on nodelist
+let my_li = document.querySelectorAll("li");
+undefined
+my_li.style.color = "green"                                                         // we cant directly apply style when we use "querySelectorAll()", we have pass the index or number of element
+VM2505:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:19
+(anonymous) @ VM2505:1
+my_li[0].style.color = "green"                       // these is the right way to style the element using "querySelectorAll()"
+'green'
+my_li[1].style.color = "green"
+'green'
+my_li[3].style.color = "green"
+VM2524:1 Uncaught TypeError: Cannot read properties of undefined (reading 'style')    // here pass the false index so we get an error
+    at <anonymous>:1:10
+(anonymous) @ VM2524:1
+
+my_li.forEach(function(l){                   // here we apply forEach on li Nodelist
+    l.style.color = "red"
+});
+
+let h2 = document.querySelectorAll("h2");
+h2
+NodeList [h2#Aniket.h2]
+
+h2.style.backgroundColor = "pink"
+VM2856:1 Uncaught TypeError: Cannot set properties of undefined (setting 'backgroundColor')  // same error as above as we have to use index[], althogh there is only single element is present 
+    at <anonymous>:1:26
+(anonymous) @ VM2856:1
+
+h2[0].style.backgroundColor = "pink"    
+'pink'
+
+
+document.getElementsByClassName("myList");
+HTMLCollection(4) [li.myList, li.myList, li.myList, li.myList]  // we got an HTML collection as a o/p when we use 'getElementsByClassName()'. 
+
+const li_class = document.getElementsByClassName("myList");
+
+li_class.forEach(function(l){
+  console.log(l);  
+})
+VM3251:1 Uncaught TypeError: li_class.forEach is not a function   // heres throws an error as we try to apply "forEach()" on HTML collection
+    at <anonymous>:1:10
+(anonymous) @ VM3251:1
+
+Array.from(li_class);
+(4) [li.myList, li.myList, li.myList, li.myList]
+
+let newli_class = Array.from(li_class);       // HTML collection is converted into an 'Array'
+
+newli_class.forEach(function(l){
+    l.style.color = "orange"                // now we can apply "forEach()"
+});
+
+
+
+
+-->

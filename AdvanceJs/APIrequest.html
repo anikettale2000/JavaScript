@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <p>
+
+        <h1> Status of XMLHttpRequest()  (XHR)</h1>
+        
+        0 -	UNSENT	Client has been created. open() not called yet. <br>
+        1 -	OPENED	open() has been called. <br>
+        2 -	HEADERS_RECEIVED	send() has been called, and headers and status are available.<br>
+        3 -	LOADING	Downloading; responseText holds partial data.<br>
+        4 -	DONE	The operation is complete.<br>
+    </p> -->
+  </body>
+  <script>
+    const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+
+    let xhr = new XMLHttpRequest(); //creation the instance of XMLhtttpRequest() Object using new
+
+    // .open need two parameters - 1- request which we have sent and 2) the URL on which we have to send the request
+
+    xhr.open("GET", "https://api.github.com/users/hiteshchoudhary"); // configures the type of request (GET in this case), URL to send the request to
+
+    //xhr.onreadystatechange is a callback function that gets called whenever the state of the XMLHttpRequest changes.
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);
+
+      if (xhr.readyState == 4) {
+        console.log(xhr.readyState);
+
+        let data = this.responseText;
+        console.log(data);
+        console.log(typeof data); // it returns the string type so we have to convert it into the Object type
+        let newData = JSON.parse(this.responseText); // convert it into object using JSON
+        console.log(typeof newData);
+        let followers = newData.followers;
+        let name = newData.name;
+        let img = console.log(newData.avatar_url);
+
+        // creating a card
+
+        let button = document.createElement("button");
+        button.style.color = "red";
+        button.style.backgroundColor = "yellow";
+        button.style.border = "solid black";
+        addText = document.createTextNode("See Profile");
+        button.appendChild(addText);
+        document.body.appendChild(button);
+
+        button.addEventListener("click", function () {
+          button.style.display = "none";
+
+          let Img = document.createElement("img");
+          Img.className = "image";
+          Img.src = "https://avatars.githubusercontent.com/u/11613311?v=4";
+          Img.width = 200;
+          Img.height = 200;
+          document.body.appendChild(Img);
+
+          let heading1 = document.createElement("h1");
+          addText = document.createTextNode("name");
+          heading1.appendChild(addText);
+          document.body.appendChild(heading1);
+          heading1.innerHTML = `Name : ${name} `;
+
+          let heading = document.createElement("h1");
+          addText = document.createTextNode("Followers");
+          heading.appendChild(addText);
+          document.body.appendChild(heading);
+          heading.innerHTML = `Followers : ${followers} `;
+        });
+      }
+    };
+    xhr.send();
+
+    
+  </script>
+</html>

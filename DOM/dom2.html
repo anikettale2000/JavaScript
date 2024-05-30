@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color:white">
+<div class="parent">
+    <div class="day">Monday</div>
+    <div class="day">Tueusday</div>
+    <div class="day">Wensday</div>
+    <div class="day">Thursday</div>
+</div>
+<script>
+    let div = document.querySelector(".parent");
+    console.log(div);
+    console.log(div.children);
+    console.log(div.children[0]); // for accessing element from HTML collection we must use the element indes or number in []
+
+    for(let i =0 ; i< div.children.length; i++){    // as we cant use forEach on HTML collection so use a normal for loop
+        console.log(div.children[i].innerHTML);
+    }
+    div.children[0].style.color = "red";
+
+    for(let i=0; i< div.children.length; i++){
+        console.log(div.children[i].style.color = "yellow");
+    }
+    console.log(div.firstElementChild);  // returns first Element
+    console.log(div.lastElementChild);   // returns last element
+
+    // in above code we access the child from parent
+
+    // but now we are going to access parent from the child
+
+    let eachDay = document.querySelector(".day");
+    console.log(eachDay);
+    console.log(eachDay.parentElement); // here we are getting an Parent Element from the child 
+    console.log(eachDay.nextElementSibling); // returns immediate the sibling or brother on current element
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom EDIT OR REMOVE HTML ELEMENT</title>
+</head>
+<body style="background-color: #000; color:white">
+    <ul class="lang">
+        <li>JAvascript</li>
+    </ul>
+</body>
+<script>
+    function addLang(lang){
+    let li = document.createElement("li");
+    li.innerHTML = `${lang}`;                       // innerHTML traverse all the html document at each updation so it is time consuming and hence not optimised
+    document.querySelector(".lang").appendChild(li);
+    }
+    addLang("TypeScript");
+    addLang("Python") 
+
+    // using optimize Approach
+
+    function AddLang (langName){
+    let li = document.createElement("li");
+    li.appendChild(document.createTextNode(langName));
+    document.querySelector('.lang').appendChild(li);
+    }
+    AddLang("Java");
+    AddLang("C++")
+
+    // Editing value
+
+    // using "innerHTML"
+
+    let li_two = document.querySelector("li:nth-child(2)");
+    li_two.innerHTML = "CSS"; 
+
+    // Using "TextContent"
+
+    let li_one = document.querySelector("li:first-child");
+    li_one.textContent = "HTML";
+
+    // using "outerHTML"
+
+    let li_05 = document.querySelector("li:last-child");
+    li_05.outerHTML = "<li>Cotlin</li>"
+
+    // using "replaceWith" for that we have create new Element and then that element may replace with existing Element
+
+    let new_li = document.createElement("li");
+    new_li.textContent = "Seabon";
+    li_two.replaceWith(new_li);
+
+    //  Removing HTML element
+
+    // using "Remove()"
+
+    let lastList = document.querySelector("li:last-child");
+    lastList.remove();
+
+    let removeList = document.querySelector("li:first-child");
+    removeList.remove();
+
+    new_li.style.color = "red";
+
+</script>
+</html>

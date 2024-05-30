@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // Events get activeted on some activity
+    // ways set Events in js
+
+    // appraoch 1
+    // we can add evet in html element itself just like below shown li element havind id owl. but it not the proper and efficient way to set an events
+
+    // <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="alert('owl')"></li>
+
+    // appraoch 2
+
+    // document.getElementById('owl').onclick = function(){
+    //     alert('these is an owl');    // gives less features as compared addEventListner            
+    // }
+
+    // Approach 3
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log(e);
+    //     alert('owl again');
+    // }, false);       // we can pass true and false as 3rd parameter. in not given default is false
+
+    // attachEvent() is also used to set an avents before, now it is not in used
+    // jQeury framework has '.on' to listen evets 
+
+    // topic to learn - type, timestamp, preventDefault, target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY, altkey , ctrlkey, shiftkey, keycode 
+ 
+    // Event Propagation
+
+    // 1) Event bubbleing => can be achieve using param "false".Events run from bottom to top just like bubbles in water.
+
+    // document.getElementById('images').addEventListener('click', function (e) {
+    //     console.log('these is ul');
+    //     // alert('these is ul')
+    // }, false);
+
+    // document.getElementById('owl').addEventListener('click' , function (e) {
+    //     console.log('these is owl from ul');
+    //     // alert('these is owl from ul')
+    //     // e.stopPropagation();      // prevent event-bubbleing
+    // } , false);    // here we set an event on both ul and li inside the ul, so bydeault there will be ul events trigger first and then li event, beacuse ul is the parent of li. but case is tottaly opposite as first li (owl) event tiggers and then ul . it called bubbling
+
+    // 2) Event capturing => can be achieve using param "True".Events runs from top to bottom  
+
+    // document.getElementById('images').addEventListener('click', function (e) {
+    //     console.log('these is ul');
+    //     // alert('these is ul')
+    // }, true);
+
+    // document.getElementById('owl').addEventListener('click' , function (e) {
+    //     console.log('these is owl from ul');
+    //     // alert('these is owl from ul')       // here first ul event get trigger and then ul event, here it is konwn as Event propagation . using "true" param we can prevent bubbleing
+    // } , true);
+
+                                // preventDefault() //
+    /* PreventDefualt() => prevent the default action associated with an event.
+    When an event occurs, such as a click on a link or a form submission, the browser typically performs a default action associated with that event.
+    preventDefault() allows you to stop that default action from happening.   */
+
+    // document.getElementById('google').addEventListener('click' , function(e){
+    //     console.log("google clicked")
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    // });
+
+    // Assignment => Removing an image from list when they clicked
+
+    // document.querySelector('#images').addEventListener('click', function(e){
+    //     console.log(e.target.parentNode);
+    //     let remove = e.target.parentNode;
+    //     remove.remove();
+    // }, false)
+
+    // in the above case image can be remove but when we click on list item all content get deleted, because the parent of list element is ul and ul gets deleted
+
+        document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        if(e.target.tagName === 'IMG'){
+        let remove = e.target.parentNode;
+        remove.remove();
+        };
+    }, false);
+
+        //removeIt.parentNode.removeChild(removeIt) another way to reomve img
+
+
+</script>
+</html>
